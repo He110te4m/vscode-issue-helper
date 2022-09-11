@@ -12,7 +12,7 @@
     "vscode": "^1.71.0"
   },
   "activationEvents": [
-    "*"
+    "workspaceContains:*"
   ],
   "main": "./out/extension.js",
   "scripts": {
@@ -23,8 +23,14 @@
     "lint": "eslint src --ext ts",
     "test": "node ./out/test/runTest.js"
   },
+  "dependencies": {
+    "fs-extra": "^10.1.0",
+    "octokit": "^2.0.7",
+    "simple-git": "^3.14.0"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "^0.26.3",
+    "@types/fs-extra": "^9.0.13",
     "@types/glob": "^7.2.0",
     "@types/mocha": "^9.0.0",
     "@types/node": "14.x",
@@ -36,6 +42,18 @@
     "typescript": "^4.8.3"
   },
   "contributes": {
+    "configuration": {
+      "type": "object",
+      "properties": {
+        "vscode-issue-helper.token.github": {
+          "type": "string",
+          "description": "GitHub personal access tokens"
+        }
+      },
+      "required": [
+        "vscode-issue-helper.token.github"
+      ]
+    },
     "commands": [
       {
         "command": "vscode-issue-helper.code.mark",
@@ -68,17 +86,17 @@
       "comments/commentThread/context": [
         {
           "command": "vscode-issue-helper.code.mark",
-          "group": "inline@1",
+          "group": "inline",
           "when": "commentController == vscode-issue-helper && commentThreadIsEmpty"
         },
         {
           "command": "vscode-issue-helper.code.remove",
-          "group": "inline@1",
+          "group": "inline",
           "when": "commentController == vscode-issue-helper && !commentThreadIsEmpty"
         },
         {
           "command": "vscode-issue-helper.issue.create",
-          "group": "inline@99",
+          "group": "inline@1",
           "when": "commentController == vscode-issue-helper && commentThreadIsEmpty"
         }
       ]
