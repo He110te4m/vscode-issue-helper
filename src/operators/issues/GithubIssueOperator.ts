@@ -12,12 +12,12 @@ export class GithubIssueOperator extends BaseIssueOperator {
     })
   }
 
-  async createIssue(title: string, body: string): Promise<void> {
+  async createIssue(title: string, body: string) {
     return this.kit.request('POST /repos/{owner}/{repo}/issues', {
       owner: this.owner,
       repo: this.repo,
       title,
       body,
-    }).then(() => {})
+    })
   }
 }

@@ -24,6 +24,7 @@
     "test": "node ./out/test/runTest.js"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "fs-extra": "^10.1.0",
     "octokit": "^2.0.7",
     "simple-git": "^3.14.0"
@@ -45,14 +46,20 @@
     "configuration": {
       "type": "object",
       "properties": {
-        "vscode-issue-helper.token.github": {
-          "type": "string",
-          "description": "GitHub personal access tokens"
+        "vscode-issue-helper.token": {
+          "type": "object",
+          "properties": {
+            "vscode-issue-helper.token.github": {
+              "type": "string",
+              "description": "GitHub personal access tokens"
+            },
+            "vscode-issue-helper.token.gitlab": {
+              "type": "string",
+              "description": "GitLab personal access tokens"
+            }
+          }
         }
-      },
-      "required": [
-        "vscode-issue-helper.token.github"
-      ]
+      }
     },
     "commands": [
       {

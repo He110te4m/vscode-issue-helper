@@ -7,11 +7,14 @@ const githubDomain = 'github.com'
 const sshStart = 'git@'
 const gitSuffix = '.git'
 
+export type IssueType = 'github' | 'gitlab'
+
 export interface GitInfo {
-  type: 'github' | 'gitlab'
+  type: IssueType
   url: string
   repo: string
   owner: string
+  domain: string
 }
 
 export async function getGitInfo(): Promise<GitInfo | null> {
@@ -26,12 +29,7 @@ export async function getGitInfo(): Promise<GitInfo | null> {
     return getGitProjectInfo(rootPath)
   }
 
-  return {
-    type: 'gitlab',
-    url: '',
-    repo: '',
-    owner: '',
-  }
+  return null
 }
 
 async function getGitProjectInfo(baseDir: string): Promise<GitInfo | null> {
@@ -56,6 +54,7 @@ function getGitInfoByUrl(url: string): GitInfo | null {
 
     return {
       type: domain === githubDomain ? 'github' : 'gitlab',
+      domain,
       url,
       owner,
       repo,
@@ -77,6 +76,7 @@ function getGitInfoByUrl(url: string): GitInfo | null {
 
   return {
     type: urlInfo.hostname === githubDomain ? 'github' : 'gitlab',
+    domain: urlInfo.hostname,
     url,
     owner,
     repo,

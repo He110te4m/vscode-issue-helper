@@ -15,5 +15,5 @@ export abstract class BaseIssueOperator {
     this.repo = repo
   }
 
-  abstract createIssue(title: string, body: string): Promise<void>
+  abstract createIssue(title: string, body: string): Promise<any>
 }
