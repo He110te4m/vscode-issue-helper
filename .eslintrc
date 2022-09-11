@@ -1,0 +1,7 @@
+{
+  "extends": "@antfu",
+  "rules": {
+    "curly": [2, "all"],
+    "@typescript-eslint/brace-style": [2, "1tbs"]
+  }
+}
