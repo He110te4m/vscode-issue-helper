@@ -18,10 +18,6 @@ export class GitlabIssueOperator extends BaseIssueOperator {
       headers: {
         'PRIVATE-TOKEN': this.token,
       },
-    }).then((res) => {
-      return res
-    }).catch((err) => {
-      globalThis.console.log(err)
     })
   }
 
