@@ -75,6 +75,26 @@
         "title": "Publish issue"
       }
     ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "vscode-issue-helper-views-issue",
+          "title": "Issue helper",
+          "icon": "$(remote-explorer)"
+        }
+      ]
+    },
+    "views": {
+      "vscode-issue-helper-views-issue": [
+        {
+          "type": "webview",
+          "id": "vscode-issue-helper-views-issue.issue-helper",
+          "name": "Create Issue",
+          "icon": "$(remote-explorer)",
+          "contextualTitle": "Create Issue"
+        }
+      ]
+    },
     "menus": {
       "commandPalette": [
         {

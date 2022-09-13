@@ -8,7 +8,7 @@ export class CommentService {
     this.ctrl = this.createController()
   }
 
-  /** 通过 dispose 让 vscode 自动释放资源 */
+  /** Let vscode automatically release resources through dispose */
   dispose() {
     return this.ctrl.dispose()
   }
