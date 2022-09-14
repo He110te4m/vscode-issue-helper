@@ -22,5 +22,9 @@
       "~/*": ["src/*"]
     }
   },
+  "include": [
+    "./types",
+    "../../types/bridge.d.ts"
+  ],
   "exclude": ["dist", "node_modules"]
 }
