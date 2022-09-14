@@ -1,8 +1,19 @@
-import { commands } from 'vscode'
+import { type CommentReply, commands } from 'vscode'
+import { getTextByUri } from '../helpers/generators/text'
+import type { IssueWebService } from '../services/IssueWebService'
 import { commandIDs } from './const'
 
-export function registeCodeCommands() {
+export function registeCodeCommands(issueService: IssueWebService) {
   return [
-    commands.registerCommand(commandIDs.markCode, () => {}),
+    commands.registerCommand(commandIDs.markCode, ({ text, thread }: CommentReply) => {
+      const { uri, range } = thread
+
+      issueService.sendMessage('add-code', {
+        desc: text,
+        code: getTextByUri(uri, range),
+      })
+
+      thread.dispose()
+    }),
   ]
 }

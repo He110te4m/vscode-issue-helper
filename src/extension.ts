@@ -5,7 +5,7 @@ import { extensionName } from './const'
 import { getGitInfo } from './helpers/env/git'
 import { getIssueOperator } from './operators/issues/factory'
 import { CommentService } from './services/CommentService'
-import { IssueWebService } from './services/IssueWebService';
+import { IssueWebService } from './services/IssueWebService'
 
 export async function activate(context: ExtensionContext) {
   const info = await getGitInfo()
@@ -27,7 +27,7 @@ export async function activate(context: ExtensionContext) {
     commentService,
     issueWebService,
     ...registeIssueCommands(operator),
-    ...registeCodeCommands(),
+    ...registeCodeCommands(issueWebService),
   )
 }
 

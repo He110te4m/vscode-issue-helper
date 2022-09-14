@@ -1,6 +1,6 @@
 import { readFileSync } from 'fs-extra'
 import type { Disposable, Webview, WebviewOptions, WebviewView, WebviewViewProvider } from 'vscode'
-import { Uri, ViewColumn, window } from 'vscode'
+import { Uri, window } from 'vscode'
 import { extensionID } from '../const'
 
 const panelID = `${extensionID}-views-issue`
@@ -14,6 +14,13 @@ export class IssueWebService {
   constructor(extensionUri: Uri) {
     this.uri = extensionUri
     this.registerProvider(extensionUri)
+  }
+
+  sendMessage<TEvent extends keyof WebViewEventFn>(eventName: TEvent, ...params: Parameters<WebViewEventFn[TEvent]>) {
+    this.view?.webview.postMessage({
+      eventName,
+      params,
+    })
   }
 
   dispose() {
@@ -66,9 +73,5 @@ export class IssueWebService {
 
   private getWebRoot(extensionUri: Uri): Uri {
     return Uri.joinPath(extensionUri, 'out', 'web', 'issue')
-  }
-
-  private getColumn(): ViewColumn {
-    return window.activeTextEditor?.viewColumn ?? ViewColumn.One
   }
 }

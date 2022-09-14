@@ -8,9 +8,10 @@ declare global {
 
   interface WebViewEventFn {
     /** Fired when the user selects a code snippet and adds a comment */
-    'add-code': (issue: IssueCodeData) => void;
+    'add-code': (codeData: IssueCodeData) => void;
     /** Fired when a user submits an issue */
     'submit-issue': (issue: IssueData) => void;
+    'reset-state': () => void;
   }
 
   interface VSCodeInstance {

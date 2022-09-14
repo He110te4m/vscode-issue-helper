@@ -1,20 +1,29 @@
 const vscode = getVSCode()
 
-const issueData = ref<IssueData>(vscode.getState() || {
-  title: '',
-  content: '',
-  codeSnippets: [],
-})
+const storageKey = 'vscode-issue-helper-state'
+
+const issueData = useSessionStorage<IssueData>(storageKey, getDefauleValue())
 
 export function useIssueData() {
-  useVSCodeEvent('add-code', (code: IssueCodeData) => {
-    issueData.codeSnippets.push(code)
+  useVSCodeEvent('reset-state', () => {
+    issueData.value = getDefauleValue()
   })
 
-  // TODO: update
+  useVSCodeEvent('add-code', (code: IssueCodeData) => {
+    issueData.value.codeSnippets.push(code)
+  })
+
   watchThrottled(issueData, () => {
     vscode.setState(issueData.value)
   }, { deep: true, throttle: 500 })
 
   return issueData
+}
+
+function getDefauleValue() {
+  return {
+    title: '',
+    content: '',
+    codeSnippets: [],
+  }
 }
