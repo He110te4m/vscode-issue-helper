@@ -67,10 +67,6 @@
         "title": "Append code to issue"
       },
       {
-        "command": "vscode-issue-helper.code.remove",
-        "title": "Remove code from issue"
-      },
-      {
         "command": "vscode-issue-helper.issue.create",
         "title": "Publish issue"
       }
@@ -102,10 +98,6 @@
           "when": "false"
         },
         {
-          "command": "vscode-issue-helper.code.remove",
-          "when": "false"
-        },
-        {
           "command": "vscode-issue-helper.issue.create",
           "when": "false"
         }
@@ -115,11 +107,6 @@
           "command": "vscode-issue-helper.code.mark",
           "group": "inline",
           "when": "commentController == vscode-issue-helper && commentThreadIsEmpty"
-        },
-        {
-          "command": "vscode-issue-helper.code.remove",
-          "group": "inline",
-          "when": "commentController == vscode-issue-helper && !commentThreadIsEmpty"
         },
         {
           "command": "vscode-issue-helper.issue.create",

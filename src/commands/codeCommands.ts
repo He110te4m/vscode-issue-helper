@@ -4,6 +4,5 @@ import { commandIDs } from './const'
 export function registeCodeCommands() {
   return [
     commands.registerCommand(commandIDs.markCode, () => {}),
-    commands.registerCommand(commandIDs.removeCode, () => {}),
   ]
 }
