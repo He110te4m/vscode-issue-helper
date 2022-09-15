@@ -1,5 +1,5 @@
 declare global {
-  type IssueCodeData = Record<'desc' | 'code', string>;
+  type IssueCodeData = Record<'desc' | 'code' | 'id' | 'path', string>;
   type IssueData = {
     title: string;
     codeSnippets: IssueCodeData[];
