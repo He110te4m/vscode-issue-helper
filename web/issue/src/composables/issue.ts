@@ -1,10 +1,12 @@
+import { defaultRepoKey } from '~/const/keys'
+
 const vscode = getVSCode()
 
 const storageKey = 'vscode-issue-helper-state'
 
-const issueData = useSessionStorage<IssueData>(storageKey, getDefauleValue())
-
 export function useIssueData() {
+  const issueData = useSessionStorage<IssueData>(storageKey, getDefauleValue())
+
   useVSCodeEvent('reset-state', () => {
     issueData.value = getDefauleValue()
   })
@@ -24,6 +26,7 @@ function getDefauleValue() {
   return {
     title: '',
     content: '',
+    repo: sessionStorage.getItem(defaultRepoKey) ?? '',
     codeSnippets: [],
   }
 }

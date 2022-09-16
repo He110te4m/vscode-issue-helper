@@ -2,7 +2,7 @@ import { type CommentReply, commands } from 'vscode'
 import { v4 as uuid } from 'uuid'
 import { getTextByUri } from '../helpers/generators/text'
 import type { IssueWebService } from '../services/IssueWebService'
-import { commandIDs } from './const'
+import { commandIDs } from '../const'
 
 export function registeCodeCommands(issueService: IssueWebService) {
   return [

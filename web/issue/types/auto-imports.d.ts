@@ -35,6 +35,8 @@ declare global {
   const extendRef: typeof import('@vueuse/core')['extendRef']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
+  const getDefaultRepository: typeof import('../src/helpers/repository')['getDefaultRepository']
+  const getRepository: typeof import('../src/helpers/repository')['getRepository']
   const getVSCode: typeof import('../src/helpers/vscode')['getVSCode']
   const h: typeof import('vue')['h']
   const ignorableWatch: typeof import('@vueuse/core')['ignorableWatch']
@@ -307,6 +309,8 @@ declare module '@vue/runtime-core' {
     readonly extendRef: UnwrapRef<typeof import('@vueuse/core')['extendRef']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
+    readonly getDefaultRepository: UnwrapRef<typeof import('../src/helpers/repository')['getDefaultRepository']>
+    readonly getRepository: UnwrapRef<typeof import('../src/helpers/repository')['getRepository']>
     readonly getVSCode: UnwrapRef<typeof import('../src/helpers/vscode')['getVSCode']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly ignorableWatch: UnwrapRef<typeof import('@vueuse/core')['ignorableWatch']>

@@ -51,13 +51,29 @@
         "vscode-issue-helper.token": {
           "type": "object",
           "properties": {
-            "vscode-issue-helper.token.github": {
+            "github": {
               "type": "string",
               "description": "GitHub personal access tokens"
             },
-            "vscode-issue-helper.token.gitlab": {
+            "gitlab": {
               "type": "string",
               "description": "GitLab personal access tokens"
+            }
+          }
+        },
+        "vscode-issue-helper.repository": {
+          "type": "object",
+          "properties": {
+            "list": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Please fill in the git repository url. eg: `git@github.com:He110te4m/vscode-issue-helper.git` or `https://github.com/He110te4m/vscode-issue-helper.git`"
+            },
+            "default": {
+              "type": "string",
+              "description": "Select an item from the candidate list as the default"
             }
           }
         }
