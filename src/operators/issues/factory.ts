@@ -1,5 +1,5 @@
 import { workspace } from 'vscode'
-import { extensionID } from '../../const'
+import { configurationIDs } from '../../const'
 import type { GitInfo } from '../../helpers/env/git'
 import type { BaseIssueOperator } from './BaseIssueOperator'
 import { GithubIssueOperator } from './GithubIssueOperator'
@@ -28,5 +28,5 @@ export function getIssueOperator({ type, repo, owner, domain }: GitInfo) {
 }
 
 function getConfig(type: GitInfo['type']) {
-  return workspace.getConfiguration(`${extensionID}.token`).get<string>(type)
+  return workspace.getConfiguration(configurationIDs.token).get<string>(type)
 }

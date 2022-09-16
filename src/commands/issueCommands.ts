@@ -1,8 +1,7 @@
 import { type CommentReply, commands, window } from 'vscode'
-import { extensionName } from '../const'
+import { commandIDs, extensionName } from '../const'
 import { getTextByUri } from '../helpers/generators/text'
 import type { BaseIssueOperator } from '../operators/issues/BaseIssueOperator'
-import { commandIDs } from './const'
 
 export function registeIssueCommands(issueOperator: BaseIssueOperator) {
   return [

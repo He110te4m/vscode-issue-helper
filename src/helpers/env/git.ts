@@ -17,16 +17,28 @@ export interface GitInfo {
   domain: string
 }
 
+const cache: Record<string, GitInfo> = {}
+
 export async function getGitInfo(): Promise<GitInfo | null> {
   const rootPath = getRootPath()
   if (!rootPath) {
-    return Promise.resolve(null)
+    return null
+  }
+
+  if (cache[rootPath]) {
+    return cache[rootPath]
   }
 
   const isGitProject = existsSync(join(rootPath, '.git'))
 
   if (isGitProject) {
-    return getGitProjectInfo(rootPath)
+    const info = await getGitProjectInfo(rootPath)
+
+    if (info) {
+      cache[rootPath] = info
+    }
+
+    return info
   }
 
   return null

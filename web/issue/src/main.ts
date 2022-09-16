@@ -4,7 +4,16 @@ import App from './App.vue'
 import '@unocss/reset/tailwind.css'
 import './styles/main.css'
 import 'uno.css'
+import { defaultRepoKey } from './const/keys'
 
-const app = createApp(App)
-app.use(router)
-app.mount('#app')
+init()
+
+async function init() {
+  const app = createApp(App)
+
+  const key = await getDefaultRepository()
+  window.console.log('repo-key', key)
+  sessionStorage.setItem(defaultRepoKey, key)
+
+  app.mount('#app')
+}
