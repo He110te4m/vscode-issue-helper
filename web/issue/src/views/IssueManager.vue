@@ -32,7 +32,7 @@ onMounted(async () => {
     <select
       v-model="issueData.repo" border="~ color-zinc-500" b-rd="2px" p="x-4 y-2" text="14px" outline="none" bg="inherit"
     >
-      <option v-for="item in list" :key="item">
+      <option v-for="item in list" :key="item" b-rd="0" p="x-2 y-1" :title="item" class="ellipsis">
         {{ item }}
       </option>
     </select>

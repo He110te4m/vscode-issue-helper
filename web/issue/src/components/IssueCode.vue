@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { issue } = defineProps<{ issue: IssueCodeData; }>();
+const { issue } = defineProps<{ issue: IssueCodeData }>()
 </script>
 
 <template>
@@ -14,14 +14,3 @@ const { issue } = defineProps<{ issue: IssueCodeData; }>();
     </div>
   </div>
 </template>
-
-<style>
-.ellipsis {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 100%;
-  direction: rtl;
-  text-align: left;
-}
-</style>
